@@ -1,0 +1,92 @@
+{
+  "name": "typescript-library-starter",
+  "version": "0.0.0",
+  "description": "A starter template for TypeScript libraries ready to be published to npm.",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm clean && rollup -c --bundleConfigAsCjs",
+    "clean": "rimraf dist",
+    "test": "jest --maxWorkers=50%",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --runInBand",
+    "test:coverage": "jest --coverage",
+    "test:changed": "jest --onlyChanged",
+    "format": "biome format --write",
+    "lint": "biome check --fix",
+    "lint:staged": "lint-staged",
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "changeset:publish": "pnpm build && changeset publish",
+    "prepare": "npx simple-git-hooks",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.9",
+    "@rollup/plugin-commonjs": "^28.0.0",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^12.1.0",
+    "@types/jest": "^29.5.13",
+    "@types/node": "^22.7.5",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.2.10",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.24.0",
+    "simple-git-hooks": "^2.11.1",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.7.0",
+    "typescript": "^5.6.2"
+  },
+  "peerDependencies": {
+    "typescript": ">=5.0.4"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "files": ["dist", "src"],
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "keywords": [
+    "typescript",
+    "library",
+    "starter",
+    "template",
+    "npm",
+    "publish",
+    "rollup",
+    "jest",
+    "biome",
+    "terser"
+  ],
+  "author": "Sohab Sk",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/ITZSHOAIB/typescript-library-starter"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "lint-staged": {
+    "*": ["pnpm lint", "git add"]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm typecheck && pnpm test:ci && pnpm lint:staged"
+  },
+  "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
