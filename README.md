@@ -2,14 +2,18 @@
 
 Welcome to the **TypeScript Library Starter**! This template is designed to help you kickstart your TypeScript library development with ease. It includes all the necessary tools and configurations to get you up and running quickly.
 
+> [!NOTE]
+> This is **[ESM](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c)** only
+
 ## Features ✨
 
 - **TypeScript** for type-safe code
-- **Rollup** for bundling
-- **Jest** for testing
+- **Vitest** for testing
 - **Biome** for linting and formatting
 - **Changesets** for versioning and changelogs
 - **GitHub Actions** for CI/CD
+- **Automated NPM Release** for hassle-free release
+- **simple-git-hooks** for better collaboration
 
 ## Getting Started 🛠️
 
@@ -35,7 +39,7 @@ Welcome to the **TypeScript Library Starter**! This template is designed to help
 
 After the installation, you can start using your library in your projects. Here's an example of how to import and use your library:
 
-- Replace `your-library-name` with the actual name of your library as specified in your package.json.
+- Replace `typescript-library-starter` with the actual name of your library as specified in your package.json along with other appropriate fields as well.
 
 - Note: If the GitHub Actions workflow is currently disabled, you can enable it by removing any comments or disabling flags in the workflow configuration files located in the `.github/workflows` directory.
 
@@ -43,6 +47,8 @@ After the installation, you can start using your library in your projects. Here'
     ```sh
     pnpm prepare
     ```
+
+- For **Automated NPM Release**, add NPM token in github repository's secrets with key named `NPM_TOKEN`
 
 ## Contributing 🤝
 
